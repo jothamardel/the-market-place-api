@@ -5,15 +5,25 @@ const businessRoute = require('./routes/business.route');
 const adminRoute = require('./routes/admin-login.route');
 const { get404 } = require('./controllers/error.controller');
 
+// exports.knex = require('knex')({
+//   client: 'pg',
+//   connection: {
+//     host : '127.0.0.1',
+//     user : 'market',
+//     password : 'market',
+//     database : 'market'
+//   }
+// });
+
 exports.knex = require('knex')({
   client: 'pg',
-  connection: {
-    host : '127.0.0.1',
-    user : 'market',
-    password : 'market',
-    database : 'market'
-  }
+    connection: {
+      connectionString: process.env.DATABASE_URL,
+      ssl: true
+    }
 });
+
+
 
 app = express();
 app.use(cors());
