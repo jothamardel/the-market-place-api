@@ -76,23 +76,23 @@ exports.registerBusiness = (req, res, knex) => {
           phoneno: phoneno,
           registered: registered,
           rc_number: rcNumber
-        }).catch(error => console.log('Business error'))
+        }).catch(error => console.log(error, 'Business error'))
         knex('coordinate_details').insert({
           lat: latitude,
           lng: longitude,
           phoneno: phoneno
-        }).catch(error => console.log('Coordinate error'))
+        }).catch(error => console.log(error, 'Coordinate error'))
         knex('address_details').insert({
           city: city,
           state: state,
           address: address,
           phoneno: phoneno
-        }).catch(error => console.log('Address error'))
+        }).catch(error => console.log(error, 'Address error'))
         knex('tag_details').insert({
           tag: `{${tag}}`,
           phoneno: phoneno,
           category: category
-        }).catch(error => console.log('Tag error'))
+        }).catch(error => console.log(error, 'Tag error'))
       })
       .then(trx.commit)
       .catch(trx.rollback);
@@ -102,7 +102,7 @@ exports.registerBusiness = (req, res, knex) => {
     res.status(200).json('Registration Complete')
   })
   .catch((err) => {
-    // console.error(err);
+    console.error(err);
     res.status(400).json('Unable to resgister business.')
   });
 }
