@@ -20,6 +20,9 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
+app.use('/', (req, res, next) => {
+  res.status(200).send('Hello World!');
+})
 app.use('/api/auth', adminRoute);
 app.use('/api', businessRoute);
 app.use(get404);
