@@ -10,6 +10,7 @@ exports.createAdmin = (req, res, knex) => {
     res.status(200).json('Admin Created!')
   })
   .catch((error) => {
+    console.log(error);
     res.status(400).json('Unable to create admin')
   });
 }
