@@ -8,6 +8,14 @@ exports.getAllBusiness = (req, res, knex) => {
   })
 }
 
+exports.getAllBusinessAddress = (req, res, knex) => {
+  knex.select('*').from('address_details').then((data) => {
+    res.status(200).json(data);
+  }).catch((error) => {
+    res.staus(400).json('unable to retrieve.');
+  })
+}
+
 exports.getBusiness = (req, res, knex) => {
   knex.select('*').from('business_details').where('phoneno', '=', req.params.id).then(data => {
     res.status(200).json(data);

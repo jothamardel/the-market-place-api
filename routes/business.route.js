@@ -39,5 +39,8 @@ router.put('/update/address/:id', (req, res) => { businessController.updateBusin
 // / - GET ALL BUSINESSES
 router.get('/', (req, res) => { businessController.getAllBusiness(req, res, knexConfig.knex)} );
 
+// / - GET ALL BUSINESSES
+router.get('/address', (req, res) => { businessController.getAllBusinessAddress(req, res, knexConfig.knex)} );
+
 module.exports = router;
 

@@ -26,6 +26,6 @@ exports.adminLogin = (req, res, knex) => {
     res.status(400).json('login credentials incorrect!')
   })
   .catch((error) => {
-    res.status(400).json('unable to login!')
+    res.status(400).json('Incorrect Credentials!')
   })
 }
