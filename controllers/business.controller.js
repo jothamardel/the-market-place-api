@@ -16,6 +16,30 @@ exports.getAllBusinessAddress = (req, res, knex) => {
   })
 }
 
+exports.getAllBusinessCoords = (req, res, knex) => {
+  knex.select('*').from('coordinate_details').then((data) => {
+    res.status(200).json(data);
+  }).catch((error) => {
+    res.staus(400).json('unable to retrieve.');
+  })
+}
+
+exports.getAllBusinessOwner = (req, res, knex) => {
+  knex.select('*').from('owner_details').then((data) => {
+    res.status(200).json(data);
+  }).catch((error) => {
+    res.staus(400).json('unable to retrieve.');
+  })
+}
+
+exports.getAllBusinessTag = (req, res, knex) => {
+  knex.select('*').from('tag_details').then((data) => {
+    res.status(200).json(data);
+  }).catch((error) => {
+    res.staus(400).json('unable to retrieve.');
+  })
+}
+
 exports.getBusiness = (req, res, knex) => {
   knex.select('*').from('business_details').where('phoneno', '=', req.params.id).then(data => {
     res.status(200).json(data);

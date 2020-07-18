@@ -39,8 +39,17 @@ router.put('/update/address/:id', (req, res) => { businessController.updateBusin
 // / - GET ALL BUSINESSES
 router.get('/', (req, res) => { businessController.getAllBusiness(req, res, knexConfig.knex)} );
 
-// / - GET ALL BUSINESSES
+// /address - GET ALL BUSINESSE ADDRESSES
 router.get('/address', (req, res) => { businessController.getAllBusinessAddress(req, res, knexConfig.knex)} );
+
+// /owner - GET ALL BUSINESSES OWNER
+router.get('/owner', (req, res) => { businessController.getAllBusinessOwner(req, res, knexConfig.knex)} );
+
+// /coord - GET ALL BUSINESSE COORDINATES
+router.get('/coord', (req, res) => { businessController.getAllBusinessCoords(req, res, knexConfig.knex)} );
+
+// /tag - GET ALL BUSINESSES TAGS
+router.get('/tag', (req, res) => { businessController.getAllBusinessTag(req, res, knexConfig.knex)} );
 
 module.exports = router;
 
