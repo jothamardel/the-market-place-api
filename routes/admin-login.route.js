@@ -7,6 +7,8 @@ const router = express.Router();
 router.post('/create-admin', (req, res) => { adminController.createAdmin(req, res, knexConfig.knex)} );
 
 // /login-admin POST TO AUTHENTICATE ADMIN
-router.post('/login-admin', (req, res) => { adminController.adminLogin(req, res, knexConfig.knex)} );
+router.post('/login-admin', (req, res) => { 
+  // console.log(knexConfig.knex)
+  adminController.adminLogin(req, res, knexConfig.knex)} );
 
 module.exports = router;

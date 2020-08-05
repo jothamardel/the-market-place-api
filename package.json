@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "author": "Mbiplang Ardel",
   "license": "ISC",
@@ -14,6 +14,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "knex": "^0.21.2",
+    "mongoose": "^5.9.27",
     "pg": "^8.3.0"
   },
   "devDependencies": {
