@@ -1,11 +1,14 @@
+const User = require('../models/user');
 
-exports.createAdmin = (req, res, knex) => {
+
+exports.createAdmin = (req, res) => {
   const { name, password } = req.body;
-  knex('admin_login').insert({
+  const user = new User({
     name: name,
     password: password
   })
-  .returning('name')
+  user
+  .save()
   .then((data) => {
     res.status(200).json('Admin Created!')
   })
@@ -15,18 +18,17 @@ exports.createAdmin = (req, res, knex) => {
   });
 }
 
-exports.adminLogin = (req, res, knex) => {
+exports.adminLogin = (req, res) => {
   const { name, password } = req.body;
-  console.log(knex)
-  // knex.select('*').from('admin_login').where('name', '=', name).then(data => console.log(data))
-  // knex.select('*').from('admin_login').where('name', '=', name)
-  // .then((data) => {
-  //   if (data[0].password === password && data[0].name === name) {
-  //     return res.status(200).json(data[0].name);
-  //   }
-  //   res.status(400).json('login credentials incorrect!')
-  // })
-  // .catch((error) => {
-  //   res.status(400).json('Incorrect Credentials!')
-  // })
+
+  User.find({ name: name, password: password })
+  .then((data) => {
+    if (data) {
+      return res.status(200).json('Login successful!');
+    }
+    res.status(400).json('login credentials incorrect!')
+  })
+  .catch((error) => {
+    res.status(400).json('Incorrect Credentials!')
+  })
 }

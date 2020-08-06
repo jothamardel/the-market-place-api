@@ -38,19 +38,25 @@ dotenv.config();
 
 // console.log(process.env.NODE)
 
+const whitelist = [process.env.FRONT_END_URL_LOCAL, process.env.FRONT_END_URL_LIVE]
 
-
+var corsOptions = {
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
 
 
 app = express();
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
-// app.use('/', (req, res, next) => {
-//   res.json('Hello World')
-//   next();
-// })
+
 app.use('/api/auth', adminRoute);
 app.use('/api', businessRoute);
 app.use(get404);
