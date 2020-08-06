@@ -40,19 +40,21 @@ dotenv.config();
 
 const whitelist = [process.env.FRONT_END_URL_LOCAL, process.env.FRONT_END_URL_LIVE, 'http://localhost:3001']
 
-var corsOptions = {
-  origin: (origin, callback) => {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
+const corsOptionsDelegate = (req, callback) => {
+  let corsOptions;
+  if (whitelist.indexOf(req.header('Origin')) !== -1) {
+    // reflect (enable) the requested origin in the CORS response
+    corsOptions = { origin: true, credentials: true };
+  } else {
+    corsOptions = { origin: false, credentials: true }; // disable CORS for this request
   }
-}
+  callback(null, corsOptions); // callback expects two parameters: error and options
+};
+
 
 
 app = express();
-app.use(cors(corsOptions));
+app.use(cors(corsOptionsDelegate));
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
