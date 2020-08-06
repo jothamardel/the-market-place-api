@@ -42,7 +42,7 @@ dotenv.config();
 
 const whitelist = ["https://the-market-place.vercel.app/", "http://localhost:3001"]
 
-const corsOptionsDelegate = (req, callback) => {
+exports.corsOptionsDelegate = (req, callback) => {
   let corsOptions;
   if (whitelist.indexOf(req.header('Origin')) !== -1) {
     // reflect (enable) the requested origin in the CORS response
@@ -63,8 +63,8 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
 
-app.use('/api/auth', cors(corsOptionsDelegate), adminRoute);
-app.use('/api', cors(corsOptionsDelegate), businessRoute);
+app.use('/api/auth', adminRoute);
+app.use('/api', businessRoute);
 app.use(get404);
 
 const PORT = process.env.PORT || 3000
