@@ -58,13 +58,13 @@ const corsOptionsDelegate = (req, callback) => {
 
 app = express();
 
-app.use(cors(corsOptionsDelegate));
+// app.use(cors(corsOptionsDelegate));
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
 
-app.use('/api/auth', adminRoute);
-app.use('/api', businessRoute);
+app.use('/api/auth', cors(corsOptionsDelegate), adminRoute);
+app.use('/api', cors(corsOptionsDelegate), businessRoute);
 app.use(get404);
 
 const PORT = process.env.PORT || 3000
