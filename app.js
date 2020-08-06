@@ -2,9 +2,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const dotenv = require('dotenv');
 const businessRoute = require('./routes/business.route');
 const adminRoute = require('./routes/admin-login.route');
 const { get404 } = require('./controllers/error.controller');
+
+dotenv.config();
 
 
 
@@ -55,9 +58,9 @@ app.use(get404);
 const PORT = process.env.PORT || 3000
 
 mongoose
-  .connect('mongodb+srv://mbiplang:mbiplang123.@lutukcluster0.6k3tm.mongodb.net/business?retryWrites=true&w=majority')
+  .connect(process.env.MONGODB_ATLAS_URI)
   .then(result => {
-    app.listen(PORT, () => console.log(`Connected to Atlas. Server running on PORT: ${PORT}`));
+    app.listen(PORT, () => console.log(`Connected to MongoDB Atlas. Server running on PORT: ${PORT}`));
   })
   .catch(err => {
     console.log('Unable to connect to Atlas.....', err);
