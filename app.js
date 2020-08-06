@@ -38,7 +38,7 @@ dotenv.config();
 
 // console.log(process.env.NODE)
 
-const whitelist = [process.env.FRONT_END_URL_LOCAL, process.env.FRONT_END_URL_LIVE, 'http://localhost:3001']
+const whitelist = ['http://localhost:3001']
 
 const corsOptionsDelegate = (req, callback) => {
   let corsOptions;
