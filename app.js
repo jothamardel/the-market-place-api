@@ -54,7 +54,7 @@ const corsOptionsDelegate = (req, callback) => {
 
 
 app = express();
-app.use(cors(corsOptionsDelegate));
+app.use(cors('no-cors'));
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
