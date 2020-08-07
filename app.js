@@ -10,45 +10,18 @@ const { get404 } = require('./controllers/error.controller');
 dotenv.config();
 
 
-
-// if (process.env.NODE === 'development') {
-//   const knex = require('knex')({
-//     client: 'pg',
-//     connection: {
-//       host : '127.0.0.1',
-//       user : 'market',
-//       password : 'market',
-//       database : 'market'
-//     }
-//   });
-// }
-
-// if (process.env.NODE_ENV === 'production') {
-//   const knex = require('knex')({
-//     client: 'pg',
-//       connection: {
-//         connectionString: process.env.DATABASE_URL,
-//         ssl: {
-//           rejectUnauthorized: false
-//         }
-//       }
-//   });
-// }
-
 const corsOptions = {
   origin: 'https://the-market-place.vercel.app'
 }
 
-
-
-
 app = express();
 
-app.use(cors(corsOptions));
+if (process.env.NODE_ENV === 'production') {
+  app.use(cors(corsOptions));
+}
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
-
-
 
 app.use('/api/auth', adminRoute);
 app.use('/api', businessRoute);

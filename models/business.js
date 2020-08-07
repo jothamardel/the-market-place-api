@@ -50,7 +50,7 @@ const businessSchema = new Schema({
     unique: true
   },
   agent: {
-    type: String,
+    type: {},
     required: true
   },
   coords: {

@@ -24,7 +24,11 @@ exports.adminLogin = (req, res) => {
   User.find({ name: name, password: password })
   .then((data) => {
     if (data) {
-      return res.status(200).json('Login successful!');
+      const userInfo = {
+        name: data[0].name,
+        id: data[0]._id
+      }
+      return res.status(200).json(userInfo);
     }
     res.status(400).json('login credentials incorrect!')
   })
