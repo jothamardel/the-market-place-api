@@ -7,9 +7,9 @@ const router = express.Router();
 // const whitelist = ["https://the-market-place.vercel.app/", "http://localhost:3001", "http://localhost:3000"]
 
 // /create-admin POST TO CREATE NEW ADMIN
-router.post('/create-admin', adminController.createAdmin);
+router.options('/create-admin', cors(), adminController.createAdmin);
 
 // /login-admin POST TO AUTHENTICATE ADMIN
-router.post('/login-admin', adminController.adminLogin);
+router.options('/login-admin', cors(), adminController.adminLogin);
 
 module.exports = router;
