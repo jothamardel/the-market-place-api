@@ -62,6 +62,10 @@ app = express();
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 app.use('/api/auth', adminRoute);
 app.use('/api', businessRoute);
