@@ -4,12 +4,12 @@ const cors = require('cors');
 const corsConfig = require('../app');
 const router = express.Router();
 
-const whitelist = ["https://the-market-place.vercel.app/", "http://localhost:3001", "http://localhost:3000"]
+// const whitelist = ["https://the-market-place.vercel.app/", "http://localhost:3001", "http://localhost:3000"]
 
 // /create-admin POST TO CREATE NEW ADMIN
-router.post('/create-admin', cors(), adminController.createAdmin);
+router.post('/create-admin', adminController.createAdmin);
 
 // /login-admin POST TO AUTHENTICATE ADMIN
-router.post('/login-admin', cors(), adminController.adminLogin);
+router.post('/login-admin', adminController.adminLogin);
 
 module.exports = router;
