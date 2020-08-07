@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
-// const businessRoute = require('./routes/business.route');
+const businessRoute = require('./routes/business.route');
 const adminRoute = require('./routes/admin-login.route');
 const { get404 } = require('./controllers/error.controller');
 
