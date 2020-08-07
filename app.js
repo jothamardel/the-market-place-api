@@ -54,13 +54,18 @@ exports.corsOptionsDelegate = (req, callback) => {
 };
 
 
+const corsOptions = {
+  origin: 'https://the-market-place.vercel.app'
+}
+
+
 
 
 app = express();
 
-app.use(cors(corsOptionsDelegate));
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
+app.use(cors(corsOptions));
 
 // app.use((req, res, next) => {
 //   res.header('Access-Control-Allow-Origin', '*');
