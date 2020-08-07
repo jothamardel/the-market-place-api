@@ -58,7 +58,7 @@ exports.corsOptionsDelegate = (req, callback) => {
 
 app = express();
 
-// app.use(cors(corsOptionsDelegate));
+app.use(cors(corsOptionsDelegate));
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
