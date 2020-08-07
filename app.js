@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const businessRoute = require('./routes/business.route');
+// const businessRoute = require('./routes/business.route');
 const adminRoute = require('./routes/admin-login.route');
 const { get404 } = require('./controllers/error.controller');
 
@@ -40,18 +40,18 @@ dotenv.config();
 
 // console.log(process.env.NODE)
 
-const whitelist = ["https://the-market-place.vercel.app/", "http://localhost:3001"]
+// const whitelist = ["https://the-market-place.vercel.app/", "http://localhost:3001"]
 
-exports.corsOptionsDelegate = (req, callback) => {
-  let corsOptions;
-  if (whitelist.indexOf(req.header('Origin')) !== -1) {
-    // reflect (enable) the requested origin in the CORS response
-    corsOptions = { origin: true, credentials: true };
-  } else {
-    corsOptions = { origin: false, credentials: true }; // disable CORS for this request
-  }
-  callback(null, corsOptions); // callback expects two parameters: error and options
-};
+// exports.corsOptionsDelegate = (req, callback) => {
+//   let corsOptions;
+//   if (whitelist.indexOf(req.header('Origin')) !== -1) {
+//     // reflect (enable) the requested origin in the CORS response
+//     corsOptions = { origin: true, credentials: true };
+//   } else {
+//     corsOptions = { origin: false, credentials: true }; // disable CORS for this request
+//   }
+//   callback(null, corsOptions); // callback expects two parameters: error and options
+// };
 
 
 const corsOptions = {
@@ -63,19 +63,16 @@ const corsOptions = {
 
 app = express();
 
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
-app.use(cors(corsOptions));
 
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   next();
-// });
-
-// app.options('*', cors());
+// app.use('/api/auth', (req, res, next) => {
+//   res.json('Hello World')
+// })
 
 app.use('/api/auth', adminRoute);
-app.use('/api', businessRoute);
+// app.use('/api', businessRoute);
 app.use(get404);
 
 const PORT = process.env.PORT || 3000
