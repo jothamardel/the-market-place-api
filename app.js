@@ -67,7 +67,7 @@ app.use(bodyParser.json());
 //   next();
 // });
 
-app.option('*', cors());
+app.options('*', cors());
 
 app.use('/api/auth', adminRoute);
 app.use('/api', businessRoute);
