@@ -59,6 +59,6 @@ exports.registerBusiness = (req, res) => {
     })
     .catch(err => {
       console.log(err.message);
-      res.status(400).json(`Unable to register business. ${err.message}`)
+      res.status(400).json(`Unable to register business.`)
     })
 }
