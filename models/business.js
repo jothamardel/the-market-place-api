@@ -15,10 +15,12 @@ const businessSchema = new Schema({
   },
   rc_number: {
     type: Number,
-    unique: true
+    unique: true,
+    default: null
   },
   registered: {
-    type: Boolean
+    type: Boolean,
+    default: null
   },
   phone_number: {
     type: Number,
@@ -47,7 +49,8 @@ const businessSchema = new Schema({
   },
   email: {
     type: String,
-    unique: true
+    unique: true,
+    default: null
   },
   agent: {
     type: {},
