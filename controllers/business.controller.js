@@ -29,9 +29,9 @@ exports.registerBusiness = (req, res) => {
     latitude, longitude,
     rcNumber, city, state, address, tag, agent
   } = req.body;
-  if (req.body.registered === "") {
-    registered = null;
-  }
+  // if (req.body.registered === "") {
+  //   registered = null;
+  // }
   const business = new Business({
     business_name: businessname,
     business_owner: owner,
@@ -58,7 +58,7 @@ exports.registerBusiness = (req, res) => {
       res.status(200).json('Registration Complete')
     })
     .catch(err => {
-      console.log(err.message, err);
+      console.log(err.message);
       res.status(400).json(`Unable to register business.`)
     })
 }

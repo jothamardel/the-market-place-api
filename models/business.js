@@ -14,13 +14,11 @@ const businessSchema = new Schema({
     required: true
   },
   rc_number: {
-    type: Number,
-    unique: true,
-    default: null
+    type: Number
   },
   registered: {
     type: Boolean,
-    default: null
+    default: null,
   },
   phone_number: {
     type: Number,
@@ -49,8 +47,6 @@ const businessSchema = new Schema({
   },
   email: {
     type: String,
-    unique: true,
-    default: null
   },
   agent: {
     type: {},
@@ -66,6 +62,17 @@ const businessSchema = new Schema({
       required: true
     }
   }
-});
+})
 
-module.exports = mongoose.model('Business', businessSchema);
+businessSchema.index({
+  unique: true,
+  partialFilterExpression: { rc_number: { $type: "number" } }
+})
+
+businessSchema.index({
+  unique: true,
+  partialFilterExpression: { email: { $type: "string" } }
+})
+
+
+module.exports = mongoose.model('Business', businessSchema)
