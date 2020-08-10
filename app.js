@@ -32,7 +32,6 @@ const PORT = process.env.PORT || 3000
 mongoose
   .connect(process.env.MONGODB_ATLAS_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(result => {
-    // console.log(result)
     app.listen(PORT, () => console.log(`Connected to MongoDB Atlas. Server running on PORT: ${PORT}`));
   })
   .catch(err => {
