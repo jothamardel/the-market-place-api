@@ -22,16 +22,13 @@ exports.getBusinessById = (req, res, knex) => {
 
 
 exports.registerBusiness = (req, res) => {
-  let registered;
   const {
     owner, businessname,
     phoneno, email, category,
-    latitude, longitude,
+    latitude, longitude, registered,
     rcNumber, city, state, address, tag, agent
   } = req.body;
-  // if (req.body.registered === "") {
-  //   registered = null;
-  // }
+  
   const business = new Business({
     business_name: businessname,
     business_owner: owner,
