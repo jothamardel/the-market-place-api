@@ -29,13 +29,18 @@ var corsOptionsDelegate = function (req, callback) {
 
 app = express();
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(cors(corsOptionsDelegate));
-} else {
-  app.use(cors(corsOptionsDelegate));
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(cors(corsOptionsDelegate));
+// } else {
+//   app.use(cors(corsOptionsDelegate));
+// }
+app.use(cors(corsOptionsDelegate));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.options('/api/auth', adminRoute);
+app.options('/api/auth', userRoute);
+app.options('/api', businessRoute);
 
 app.use('/api/auth', adminRoute);
 app.use('/api/auth', userRoute);
