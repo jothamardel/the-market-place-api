@@ -33,6 +33,7 @@ exports.loginUser = (req, res) => {
         const userInfo = {
           ...data
         }
+        console.log(data)
         return res.status(200).json(userInfo);
       }
       res.status(400).json('login credentials incorrect!')
