@@ -29,7 +29,7 @@ exports.loginUser = (req, res) => {
 
   CreateUser.find({ number: number, password: Number(password) })
     .then((data) => {
-      if (data[0].mobile) {
+      if (data.length) {
         const userInfo = {
           ...data
         }
