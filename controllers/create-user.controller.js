@@ -29,6 +29,7 @@ exports.loginUser = (req, res) => {
   console.log("Req.body: ", req.body)
   CreateUser.find({ number: number, password: password })
     .then((data) => {
+      console.log("Data from DB: ", data)
       if (data.length) {
         const userInfo = {
           ...data
