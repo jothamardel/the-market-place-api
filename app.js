@@ -18,9 +18,10 @@ const corsOptions = {
 app = express();
 
 if (process.env.NODE_ENV === 'production') {
+  app.use(cors('no-cors'));
+} else {
   app.use(cors());
 }
-app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
