@@ -38,6 +38,7 @@ exports.loginUser = (req, res) => {
       res.status(400).json('login credentials incorrect!')
     })
     .catch((error) => {
+      console.log(error);
       res.status(400).json('Incorrect Credentials!')
     })
 }
