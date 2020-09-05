@@ -27,7 +27,7 @@ exports.createNewUser = (req, res) => {
 exports.loginUser = (req, res) => {
   const { number, password } = req.body;
 
-  CreateUser.find({ number: number, password: Number(password) })
+  CreateUser.find({ number: number, password: password })
     .then((data) => {
       if (data.length) {
         const userInfo = {
