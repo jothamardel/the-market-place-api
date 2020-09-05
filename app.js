@@ -5,6 +5,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const businessRoute = require('./routes/business.route');
 const adminRoute = require('./routes/admin-login.route');
+const userRoute = require('./routes/user.route');
 const { get404 } = require('./controllers/error.controller');
 
 dotenv.config();
@@ -20,10 +21,11 @@ if (process.env.NODE_ENV === 'production') {
   app.use(cors(corsOptions));
 }
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/api/auth', adminRoute);
+app.use('/api/auth', userRoute);
 app.use('/api', businessRoute);
 app.use(get404);
 
