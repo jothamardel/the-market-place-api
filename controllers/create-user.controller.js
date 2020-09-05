@@ -36,6 +36,7 @@ exports.loginUser = (req, res) => {
         // console.log(data)
         return res.status(200).json(userInfo);
       }
+      console.log("From database: ", data)
       res.status(400).json('login credentials incorrect!')
     })
     .catch((error) => {
