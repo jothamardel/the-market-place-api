@@ -25,16 +25,14 @@ exports.createNewUser = (req, res) => {
 
 
 exports.loginUser = (req, res) => {
-  // console.log("Req.body: ", req.body)
+  console.log("Req.body: ", req.body)
   CreateUser.find({ mobile: req.body.number, password: req.body.password })
     .then((data) => {
       // console.log("Data from DB: ", data)
       if (data.length) {
-        const userInfo = {
-          ...data
-        }
+        // const userInfo = { ...data }
         // console.log(data)
-        return res.status(200).json(userInfo);
+        return res.status(200).json(data);
       }
       console.log("From database: ", data)
       res.status(400).json('login credentials incorrect!')
