@@ -29,7 +29,7 @@ var corsOptionsDelegate = function (req, callback) {
 
 app = express();
 
-app.use(cors(corsOptionsDelegate));
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
