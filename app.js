@@ -38,9 +38,9 @@ app.use(cors(corsOptionsDelegate));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.options('/api/auth', adminRoute);
-app.options('/api/auth', userRoute);
-app.options('/api', businessRoute);
+// app.options('/api/auth', adminRoute);
+// app.options('/api/auth', userRoute);
+// app.options('/api', businessRoute);
 
 app.use('/api/auth', adminRoute);
 app.use('/api/auth', userRoute);
